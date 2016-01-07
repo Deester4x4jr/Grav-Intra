@@ -1,0 +1,11 @@
+email: josh@desherlia.net
+fullname: 'Josh DeSherlia'
+title: 'Marketing Program Manager'
+state: enabled
+access:
+  admin:
+    login: true
+    super: true
+  site:
+    login: true
+hashed_password: $2y$10$m0RNaPCsCA3TGFgVOq1wq.RZF7VsY90Xga.z5HlMgcDTqNsxX.uk.

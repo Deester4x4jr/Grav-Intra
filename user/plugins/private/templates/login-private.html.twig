@@ -1,0 +1,58 @@
+{% extends 'partials/base.html.twig' %}
+
+{% block content %}
+
+<div class="login">
+
+    <h1>{{ privateconf.texts.h1 }}</h1>
+    <h2>{{ privateconf.texts.h2 }}</h2>
+
+    {% if login_error %}
+    <div class="alert">
+        {% if login_error == 'fail'  %}
+        <blockquote>
+            <p>{{ privateconf.messages.fail }}</p>
+        </blockquote>
+        {% elseif login_error == 'error' %}
+        <blockquote>
+            <p>{{ privateconf.messages.error }}</p>
+        </blockquote>
+        {% endif %}
+    </div>
+    {% endif %}
+
+    <form action="{{ page.header.slug }}" method="post" id="private">
+        <fieldset>
+
+            <!-- Username input-->
+            {% if privateconf.enable_username == false %}
+            <input id="username" name="username" type="hidden" placeholder="{{ privateconf.fields.username.placeholder }}" value="no_user" />
+            {% else %}
+            <div>
+                <label for="username">{{ privateconf.fields.username.label }}</label>
+                <input id="username" name="username" type="text" placeholder="{{ privateconf.fields.username.placeholder }}" />
+            </div>
+            {% endif %}
+
+            <!-- Password input-->
+            <div>
+                <label for="password">{{ privateconf.fields.password.label }}</label>
+                <input id="password" name="password" type="password" placeholder="{{ privateconf.fields.password.placeholder }}" />
+            </div>
+
+            <!-- Antispam input-->
+            <div class="antispam-div">
+                <input id="antispam" name="antispam" type="text" placeholder="{{ privateconf.fields.antispam.placeholder }}" />
+            </div>
+
+            <!-- Form actions -->
+            <div class="buttons">
+                <button class="button" type="submit"> {{ privateconf.fields.login.label }}</button>
+            </div>
+
+        </fieldset>
+
+    </form>
+</div>
+
+{% endblock %}
