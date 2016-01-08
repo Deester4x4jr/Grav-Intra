@@ -13,3 +13,6 @@ ehthumbs.db
 Icon?
 Thumbs.db
 *.swp
+
+# GitHub Specific
+gh/___*log*
