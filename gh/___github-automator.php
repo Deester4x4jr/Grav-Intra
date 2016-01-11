@@ -7,12 +7,12 @@
 	$logFile		= rtrim(getcwd(), '/').'/___github-log.txt';
 	$repo 			= '~/grav-intra';
 	$branch			= 'master';
-	$cmds			= array(
 	$gitPath		= '/usr/bin/git';
+	$cmds			= array(
 						'Navigating to ' . $repo => 'cd ' . $repo . '2>&1',
 						'Fetching ' . $branch . ' from origin' => $gitPath . ' fetch origin ' . $branch . '2>&1',
-						'Resetting to origin/' . $branch => $gitPath' reset --hard origin/' . $branch . '2>&1',
-						'Running Garbage Collection' => $gitPath' gc' . $branch . '2>&1',
+						'Resetting to origin/' . $branch => $gitPath . ' reset --hard origin/' . $branch . '2>&1',
+						'Running Garbage Collection' => $gitPath . ' gc' . $branch . '2>&1',
 					);
 
 	// start logging
