@@ -8,6 +8,7 @@
  */
 
 $hookSecret = 'gorillamafia';  # set NULL to disable check
+$spyHandler = "<html><body><h1>Fuck off doghnut!  You can't have my codes!</h1></body></html>";
 
 
 set_error_handler(function($severity, $message, $file, $line) {
@@ -23,6 +24,7 @@ set_exception_handler(function($e) {
 $rawPost = NULL;
 if ($hookSecret !== NULL) {
 	if (!isset($_SERVER['HTTP_X_HUB_SIGNATURE'])) {
+		echo = $spyHandler;
 		throw new \Exception("HTTP header 'X-Hub-Signature' is missing.");
 	} elseif (!extension_loaded('hash')) {
 		throw new \Exception("Missing 'hash' extension to check the secret code validity.");
@@ -35,17 +37,19 @@ if ($hookSecret !== NULL) {
 
 	$rawPost = file_get_contents('php://input');
 	if ($hash !== hash_hmac($algo, $rawPost, $hookSecret)) {
+		echo = $spyHandler;
 		throw new \Exception('Hook secret does not match.');
 	}
 };
 
-if (!isset($_SERVER['HTTP_CONTENT_TYPE'])) {
+if (!isset($_SERVER['CONTENT_TYPE'])) {
 	throw new \Exception("Missing HTTP 'Content-Type' header.");
 } elseif (!isset($_SERVER['HTTP_X_GITHUB_EVENT'])) {
+	echo = $spyHandler;
 	throw new \Exception("Missing HTTP 'X-Github-Event' header.");
 }
 
-switch ($_SERVER['HTTP_CONTENT_TYPE']) {
+switch ($_SERVER['CONTENT_TYPE']) {
 	case 'application/json':
 		$json = $rawPost ?: file_get_contents('php://input');
 		break;
@@ -55,7 +59,8 @@ switch ($_SERVER['HTTP_CONTENT_TYPE']) {
 		break;
 
 	default:
-		throw new \Exception("Unsupported content type: $_SERVER[HTTP_CONTENT_TYPE]");
+		echo = $spyHandler;
+		throw new \Exception("Unsupported content type: $_SERVER[CONTENT_TYPE]");
 }
 
 # Payload structure depends on triggered event
@@ -70,6 +75,7 @@ switch (strtolower($_SERVER['HTTP_X_GITHUB_EVENT'])) {
 	case 'push':
 		echo "We got some shit:\n";
 		print_r($payload);
+		pushMethods();
 		break;
 
 //	case 'create':
@@ -77,71 +83,50 @@ switch (strtolower($_SERVER['HTTP_X_GITHUB_EVENT'])) {
 
 	default:
 		header('HTTP/1.0 404 Not Found');
+		echo = $spyHandler;
 		echo "Event:$_SERVER[HTTP_X_GITHUB_EVENT] Payload:\n";
 		print_r($payload); # For debug only. Can be found in GitHub hook log.
 		die();
 }
 
+function pushMethods(
 
-/*	date_default_timezone_set('America/Los_Angeles');
-	ignore_user_abort(true);
-	set_time_limit(0);
-	define('PRIVATE_KEY', 'supersecrettegilesauce');
-	$canIGo = false;
+	$logFile		= rtrim(getcwd(), '/').'/log.github.out';
+	$repo 			= '~/grav-intra';
+	$branch			= 'master';
+	$gitPath		= 'PKEY=~/.ssh/deploy /usr/bin/git';
+	$cmds			= array(
+						'Navigating to ' . $repo => 'cd ' . $repo . '2>&1',
+						'Fetching ' . $branch . ' from origin' => $gitPath . ' fetch origin ' . $branch . '2>&1',
+						'Resetting to origin/' . $branch => $gitPath . ' reset --hard origin/' . $branch . '2>&1',
+						'Running Garbage Collection' => $gitPath . ' gc' . $branch . '2>&1',
+					);
 
-	if ($_SERVER['REQUEST_METHOD'] === 'POST'
-        && $_REQUEST['thing'] === PRIVATE_KEY) {
-		$canIGo = true;
-	}
+	// start logging
+	file_put_contents($logFile,
+		"\n" . '==============================================' . "\n" .
+		'Init Sync with Upstream -- ' . date('Y-m-d, H:i:s', time()) . "\n" . 
+		'----------------------------------------------' . "\n\n",
+		FILE_APPEND);
 
-	if ($canIGo) {
-		$logFile		= rtrim(getcwd(), '/').'/___github-log.txt';
-		$repo 			= '~/grav-intra';
-		$branch			= 'master';
-		$gitPath		= '/usr/bin/git';
-		$cmds			= array(
-							'Navigating to ' . $repo => 'cd ' . $repo . '2>&1',
-							'Fetching ' . $branch . ' from origin' => $gitPath . ' fetch origin ' . $branch . '2>&1',
-							'Resetting to origin/' . $branch => $gitPath . ' reset --hard origin/' . $branch . '2>&1',
-							'Running Garbage Collection' => $gitPath . ' gc' . $branch . '2>&1',
-						);
-
-		// start logging
-		file_put_contents($logFile,
-			"\n" . '==============================================' . "\n" .
-			'Init Sync with Upstream -- ' . date('Y-m-d, H:i:s', time()) . "\n" . 
-			'----------------------------------------------' . "\n\n",
-			FILE_APPEND);
-
-		// update github Repo
-		foreach ($cmds as $k=>$v) {
-			
-			$result = shell_exec($v);
-			
-			if (empty($result)) {
-				$result = "\n" . $k . ' .......... Success!!';
-			} else {
-				$result = "\n\n" . $k . ' .......... Success:' . "\n" . $result;
-			}
-
-			file_put_contents($logFile, $result, FILE_APPEND);
+	// update github Repo
+	foreach ($cmds as $k=>$v) {
+		
+		$result = shell_exec($v);
+		
+		if (empty($result)) {
+			$result = "\n" . $k . ' .......... Success!!';
+		} else {
+			$result = "\n\n" . $k . ' .......... Success:' . "\n" . $result;
 		}
 
-		// end logging
-		file_put_contents($logFile,
-			"\n\n" . '----------------------------------------------' . "\n" .
-			'Stop Sync with Upstream -- ' . date('Y-m-d, H:i:s', time()) . "\n" .
-			'==============================================' . "\n",
-			FILE_APPEND);
-	} else {
-		$msg = "Fuck off doghnut!  You can't have my codes!";
-	}*/
-?>
+		file_put_contents($logFile, $result, FILE_APPEND);
+	}
 
-<!--
-<html>
-	<body>
-		<h1><?php echo $msg; ?></h1>
-	</body>
-</html>
--->
+	// end logging
+	file_put_contents($logFile,
+		"\n\n" . '----------------------------------------------' . "\n" .
+		'Stop Sync with Upstream -- ' . date('Y-m-d, H:i:s', time()) . "\n" .
+		'==============================================' . "\n",
+		FILE_APPEND);
+}
