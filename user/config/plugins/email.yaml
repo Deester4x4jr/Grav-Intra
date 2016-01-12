@@ -1,0 +1,14 @@
+enabled: true
+from: test@grav.dev
+from_name: 'Grav Dev Test'
+to: josh@tegile.com
+to_name: 'Josh DeSherlia'
+mailer:
+  engine: smtp
+  smtp:
+    server: mailtrap.io
+    port: 25
+    encryption: none
+    user: 55271c8b4132444e5
+    password: c19dee25b173fc
+content_type: text/html
