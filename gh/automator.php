@@ -21,11 +21,6 @@
 		die();
 	});
 
-	function pushMethods(){
-
-		echo `./automator.sh`;
-	}
-
 	$rawPost = NULL;
 	if ($hookSecret !== NULL) {
 		if (!isset($_SERVER['HTTP_X_HUB_SIGNATURE'])) {
@@ -79,7 +74,7 @@
 
 		case 'push':
 			//print_r($payload);
-			pushMethods();
+			echo `./automator.sh`;
 			break;
 
 	//	case 'create':
