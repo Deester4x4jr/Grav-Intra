@@ -1,8 +1,10 @@
 absolute_urls: false
 timezone: America/Los_Angeles
+default_locale: null
 param_sep: ':'
 wrapped_site: false
 languages:
+  supported: {  }
   include_default_lang: true
   translations: true
   translations_fallback: true
@@ -11,8 +13,9 @@ languages:
   override_locale: false
 home:
   alias: /home
+  hide_in_urls: false
 pages:
-  theme: antimatter
+  theme: tegstrap
   order:
     by: default
     dir: asc
@@ -26,6 +29,7 @@ pages:
   process:
     markdown: true
     twig: true
+  twig_first: false
   events:
     page: true
     twig: true
@@ -45,6 +49,7 @@ pages:
     - json
     - rss
     - atom
+  append_url_extension: ''
   expires: 604800
   last_modified: false
   etag: false
@@ -102,7 +107,11 @@ images:
 media:
   enable_media_timestamp: false
   upload_limit: 0
+  unsupported_inline_types: {  }
+  allowed_fallback_types: {  }
 session:
   enabled: true
   timeout: 1800
   name: grav-site
+  secure: false
+  httponly: true
