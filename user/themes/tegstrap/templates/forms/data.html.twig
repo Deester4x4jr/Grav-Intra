@@ -1,0 +1,15 @@
+{# {% extends "forms/default/data.html.twig" %} #}
+
+{% for field in form.fields %}
+{% block field %}
+	{% set val = (string(form.value(field.name))) ? string(form.value(field.name)) : '' %}
+    <div>
+    	{% block field_label %}
+    		<strong>{{ field.label }}</strong>
+    	{% endblock %}
+    	{% block field_value %}
+    		<p>{{ string(form.value(field.name)|e) }}</p>
+    	{% endblock %}
+    </div>
+{% endblock %}
+{% endfor %}

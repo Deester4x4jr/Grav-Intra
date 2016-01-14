@@ -42,34 +42,36 @@ form:
           type: textarea
           validate:
             required: true
+          style: one
 
-        - name: samples
-          label: Sample Images
-          type: file
-          multiple: true
-          destination: 'user/data/tmp/'
-          #classes: "sub"
-
-        - name: sample_instructions
+        - name: desc_instr
           label: ' '
           type: display
-          content: '*Upload as many images as you like'
+          content: '*Please add links to sample images that you would like referenced or used for inspiration'
+
+        # - name: samples
+        #   label: Sample Images
+        #   type: file
+        #   multiple: true
+        #   destination: 'user/data/tmp/'
+        #   classes: "sub"
+
+        # - name: sample_instructions
+        #   label: ' '
+        #   type: display
+        #   content: '*Upload as many images as you like'
 
         - name: spacer_2
           type: spacer
-          title: ' '
+          underline: true
 
         - name: priority
           label: Priority
           type: radio
           options:
-            option1: High Priority
-            option2: Medium Priority
-            option3: Low Priority
-
-        - name: spacer_3
-          type: spacer
-          title: ' '
+            priority_high: High Priority
+            priority_medium: Medium Priority
+            priority_low: Low Priority
 
         - name: due_date
           label: Target Date
@@ -84,19 +86,22 @@ form:
 
     process:
         - email:
-            from: "{{ config.plugins.email.from }}"
+            #from: "{{ config.plugins.email.from }}"
+            from:
+              mail: "{{ form.value.email }}"
+              name: "{{ form.value.name }}"
             to:
-                mail: "{{ form.value.email }}"
+                mail: "36930.EETUG9zvuf3JYy8rCBux@inbox.breeze.pm"
             subject: "{{ form.value.title|e }}"
-            body: "{% include 'forms/data.html.twig' %}"
+            body: "{% include 'forms/breeze.email.twig' %}"
+            # attachment:
 
         - save:
-            fileprefix: feedback-
+            fileprefix: graphic-design-request-
             dateformat: Ymd-His-u
             extension: txt
             body: "{% include 'forms/data.txt.twig' %}"
 
-        - message: Thank you for your feedback!
         - display: thankyou
 ---
 

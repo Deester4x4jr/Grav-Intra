@@ -7,8 +7,10 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            {% set adminStatus = (user.admin.login) ? '/boss' : '#' %}
-            <a class="navbar-brand" href="{{ adminStatus }}">Tegile</a>
+            {% set admin_status = (grav.user.username) ? '/boss' : '#' %}
+            <a class="navbar-brand" href="{{ admin_status }}">
+                Tegile
+            </a>
         </div>
         <div class="navbar-collapse collapse">
             <ul class="nav navbar-nav navbar-right">

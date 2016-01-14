@@ -5,4 +5,4 @@ process:
     twig: true
 ---
 
-## Email sent!
+## Your request has been receieved

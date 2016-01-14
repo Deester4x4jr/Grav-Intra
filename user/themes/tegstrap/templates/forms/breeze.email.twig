@@ -1,0 +1,18 @@
+{{ form.value.description|nl2br|raw }}
+<br><br>
+@assign josh@tegile.com
+<br>
+@list Requested
+<br>
+@tag web_form,graphics,content,marketing,{{ form.value.priority|e }}
+<br>
+@duedate {{ form.value.due_date|date("M j Y") }}
+
+{# {"user/data/tmp/blockUI.png": {
+									"name": "blockUI.png",
+									"type": "image/png",
+									"size": 66653, 
+									"file": "user/data/tmp/blockUI.png",
+									"route": null
+								}
+} #}
