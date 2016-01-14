@@ -2,6 +2,7 @@
 title: 'Form Test'
 form:
     name: graphic-design-request-form
+    style: aligned
     fields:
         - name: section_1
           type: spacer
@@ -40,30 +41,16 @@ form:
           label: Description
           placeholder: "Please provide as much detail as you like to describe the request.\nFeel free to include links to examples.  You can upload images below."
           type: textarea
+          help: 'Please add links to sample images that you would like referenced or used for inspiration'
           validate:
             required: true
-          style: one
 
-        - name: desc_instr
-          label: ' '
-          type: display
-          content: '*Please add links to sample images that you would like referenced or used for inspiration'
-
-        # - name: samples
-        #   label: Sample Images
-        #   type: file
-        #   multiple: true
-        #   destination: 'user/data/tmp/'
-        #   classes: "sub"
-
-        # - name: sample_instructions
-        #   label: ' '
-        #   type: display
-        #   content: '*Upload as many images as you like'
-
-        - name: spacer_2
-          type: spacer
-          underline: true
+        - name: samples
+          label: Sample Images
+          type: file
+          help: 'Feel free to add as many images as you like'
+          multiple: true
+          destination: 'user/data/tmp/'
 
         - name: priority
           label: Priority
