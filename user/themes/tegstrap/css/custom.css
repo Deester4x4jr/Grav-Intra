@@ -112,3 +112,31 @@ blockquote > blockquote > blockquote > blockquote > blockquote > blockquote > p 
     background-color: #dff0d8;
     border-color: #d6e9c6;
 }
+
+/* ============= */
+/* Added by Josh */
+/* ============= */
+
+/* Mods for form controls */
+
+.pure-form-aligned .pure-control-group label {
+    vertical-align: top;
+    padding-top: .25rem;
+}
+
+.pure-form-aligned .pure-radio-control-group {
+    display: inline-block;
+    vertical-align: top;
+}
+
+.pure-form-aligned .pure-radio-control-group .pure-radio {
+    text-align: left;
+    display: block;
+    margin-bottom: .5rem;
+}
+
+.pure-form-aligned .pure-radio-control-group .pure-radio input {
+    line-height: normal;
+    vertical-align: baseline;
+    margin-right: .5rem;
+}
