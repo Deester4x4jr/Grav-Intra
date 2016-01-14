@@ -5,10 +5,18 @@ to: josh@tegile.com
 to_name: 'Josh DeSherlia'
 mailer:
   engine: smtp
+  # smtp:
+  #   server: smtp.gmail.com
+  #   port: 465
+  #   encryption: ssl
+  #   user: josh.desherlia@tegile.com
+  #   password: Keeper17
   smtp:
     server: mailtrap.io
-    port: 25
+    port: 465
     encryption: none
     user: 55271c8b4132444e5
     password: c19dee25b173fc
+  sendmail:
+    bin: /usr/sbin/sendmail
 content_type: text/html
