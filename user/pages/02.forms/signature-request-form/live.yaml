@@ -1,0 +1,49 @@
+- default:  |
+    ...
+- dependent:
+    field_name: name
+      field_id: name
+    field_name: title
+      field_id: title
+    field_name: email
+      field_id: ...
+    field_name: desk_phone
+      field_id: ...
+    field_name: cell_phone
+      field_id: ...
+    field_name: cards
+      img:  |
+        <div style="border-top: 3px solid #1c5ea1; font-size: 14px; color: #1c5ea1; text-align: center;">
+            <div style="margin: 1rem 2rem 0 0; display: inline-block;">
+                <a style="color: #1c5ea1; text-decoration: none;" href="http://www.tegile.com/resource/tegile-company-story-video/">
+                    <span style="display: block; margin-bottom: -0.5rem;">Our Company Story</span>
+                    <img src="http://webdev.tegile.com/wp-content/uploads/2016/01/tile1.png" width="150">
+                </a>
+            </div>
+            <div style="margin: 1rem 2rem 0 0; display: inline-block;">
+                <a style="color: #1c5ea1; text-decoration: none;" href="http://www.tegile.com/gartner-magic-quadrant/">
+                    <span style="display: block; margin-bottom: -0.5rem;">Named "Visionary" in 2 Gartner MQs</span>
+                    <img src="http://webdev.tegile.com/wp-content/uploads/2016/01/tile2.png" width="150">
+                </a>
+            </div>
+            <div style="margin: 1rem 2rem 0 0; display: inline-block;">
+                <a style="color: #1c5ea1; text-decoration: none;" href="http://www.tegile.com/gartner-magic-quadrant/">
+                    <span style="display: block; margin-bottom: -0.5rem;">Named "Visionary" in 2 Gartner MQs</span>
+                    <img src="http://webdev.tegile.com/wp-content/uploads/2016/01/tile2.png" width="150">
+                </a>
+            </div>
+        </div>
+      txt:  |
+        <div style="border-top: 3px solid #1c5ea1; font-size: 14px; color: #1c5ea1;">
+            <ul>
+                <li><a style="color: #1c5ea1; text-decoration: none;" href="http://www.tegile.com/resource/tegile-company-story-video/">Our Company Story</a></li>
+                <li><a style="color: #1c5ea1; text-decoration: none;" href="http://www.tegile.com/gartner-magic-quadrant/">Named "Visionary" in 2 Gartner MQs</a></li>
+                <li><a style="color: #1c5ea1; text-decoration: none;" href="http://www.tegile.com/gartner-magic-quadrant/">Named "Visionary" in 2 Gartner MQs</a></li>
+            </ul>
+        </div>
+    field_name: logo
+      true: ...
+      false:  |
+        <div id="companyName">
+            <span style="color: #1c5ea1; font-size: 13px; font-weight: bold; ">Tegile</span>
+        </div>
