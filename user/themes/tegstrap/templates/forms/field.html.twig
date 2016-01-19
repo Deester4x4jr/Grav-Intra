@@ -26,7 +26,7 @@
                     
                     {# required attribute structures #}
                     {% block required_attributes %}
-                        name="{{ (scope ~ field.name)|fieldName }}"
+                        {% if field.type != 'file'%}name="{{ (scope ~ field.name)|fieldName }}"{% endif %}
                         value="{{ value|e('html_attr')|join(', ') }}"
                         id="{{ fieldID }}"
                     {% endblock %}
@@ -34,8 +34,8 @@
                     {# input attribute structures #}
                     {% block input_attributes %}
                         
-                        {% if field.classes is defined %}class="{{ field.classes }}" {% endif %}
-                        {# {% if field.style is defined %}style="{{ field.style|e }}" {% endif %} #}
+                        {% if field.classes is defined %}class="{{ field.classes }}"{% endif %}
+                        {# {% if field.style is defined %}style="{{ field.style|e }}"{% endif %} #}
                         {% if field.disabled %}disabled="disabled"{% endif %}
                         {% if field.placeholder %}placeholder="{{ field.placeholder }}"{% endif %}
                         {% if field.autofocus in ['on', 'true', 1] %}autofocus="autofocus"{% endif %}
@@ -45,7 +45,7 @@
                         {% if field.validate.required in ['on', 'true', 1] %}required="required"{% endif %}
                         {% if field.validate.pattern %}pattern="{{ field.validate.pattern }}"{% endif %}
                         {% if field.validate.message %}title="{{ field.validate.message|e|t }}"
-                        {% elseif field.title is defined %}title="{{ field.title|e|t }}" {% endif %}
+                        {% elseif field.title is defined %}title="{{ field.title|e|t }}"{% endif %}
                     {% endblock %}
                 />
             {% endblock %}

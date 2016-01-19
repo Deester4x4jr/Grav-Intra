@@ -3,15 +3,8 @@
 {% set originalValue = value %}
 {% set value = (value is null ? field.default : value) %}
 
-{% block contents %}
-  <label for="{{ fieldID }}">
-      {% block label %}
-          {{ field.validate.required in ['on', 'true', 1] ? '<span class="required">*</span>' }}
-          {{ field.label|default(field.name|capitalize)|t }}
-      {% endblock %}
-  </label>
-  {% block input %}
-    <div class="pure-radio-control-group">
+{% block input %}
+  <div class="pure-radio-control-group">
     {% for key, text in field.options %}
       {% set id = field.id|default(field.name) ~ '-' ~ key %}
         <label for="{{ id|e }}" class="pure-radio">
@@ -34,5 +27,5 @@
         {{ text|e }}
       </label>
     {% endfor %}
-  {% endblock %}
+  </div>
 {% endblock %}

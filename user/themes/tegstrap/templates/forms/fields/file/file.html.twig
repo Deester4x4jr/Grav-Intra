@@ -11,6 +11,7 @@
         
         {# required attribute structures #}
         {% block required_attributes %}
+            name="{{ (scope ~ field.name)|fieldName ~ (files.multiple ? '[]' : '[]') }}"
             {{ parent() }}
         {% endblock %}
 
