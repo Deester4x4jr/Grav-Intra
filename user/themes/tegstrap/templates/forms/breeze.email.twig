@@ -1,18 +1,16 @@
+{% set conditions = {
+			'graphics-request-form': 'josh@tegile.com',
+			'website-request-form': 'conor.self@tegile.com' }
+%}
+
+Submitted by:<br>{{ form.value.name|e }} [ {{ form.value.email|e }} ]
+<br><Br>
 {{ form.value.description|nl2br|raw }}
 <br><br>
-@assign josh@tegile.com
+@assign {{ conditions[form.name] }}
 <br>
-@list Requested
-<br>
-@tag web_form,graphics,content,marketing,{{ form.value.priority|e }}
+@tag request_form,{{ form.value.default_tags|e }},{{ form.value.priority|e }}
 <br>
 @duedate {{ form.value.due_date|date("M j Y") }}
-
-{# {"user/data/tmp/blockUI.png": {
-									"name": "blockUI.png",
-									"type": "image/png",
-									"size": 66653, 
-									"file": "user/data/tmp/blockUI.png",
-									"route": null
-								}
-} #}
+<br>
+@list Requested

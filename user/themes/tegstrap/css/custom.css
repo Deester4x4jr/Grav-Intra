@@ -124,18 +124,21 @@ blockquote > blockquote > blockquote > blockquote > blockquote > blockquote > p 
     padding-top: .25rem;
 }
 
-.pure-form-aligned .pure-radio-control-group {
+.pure-form-aligned .pure-radio-control-group,
+.pure-form-aligned .pure-checkbox-control-group {
     display: inline-block;
     vertical-align: top;
 }
 
-.pure-form-aligned .pure-radio-control-group .pure-radio {
+.pure-form-aligned .pure-radio-control-group .pure-radio,
+.pure-form-aligned .pure-checkbox-control-group .pure-checkbox {
     text-align: left;
     display: block;
     margin-bottom: .5rem;
 }
 
-.pure-form-aligned .pure-radio-control-group .pure-radio input {
+.pure-form-aligned .pure-radio-control-group .pure-radio input,
+.pure-form-aligned .pure-checkbox-control-group .pure-checkbox input {
     line-height: normal;
     vertical-align: baseline;
     margin-right: .5rem;
