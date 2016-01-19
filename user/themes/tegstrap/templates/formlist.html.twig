@@ -1,0 +1,14 @@
+{% extends 'partials/base.html.twig' %}
+
+{% block content %}
+
+    {{ page.content }}
+
+    {% for p in page.children %}
+
+		{% if p.name == 'form.md' %}
+
+			<p><a href="{{ p.route }}" target="_blank">{{ p.title }}</a></p>
+		{% endif %}
+	{% endfor %}
+{% endblock %}
