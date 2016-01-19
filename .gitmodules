@@ -1,3 +1,6 @@
 [submodule "user/plugins/import"]
 	path = user/plugins/import
 	url = https://Deester4x4jr@github.com/Deester4x4jr/grav-plugin-import.git
+[submodule "user/plugins/liveForm"]
+	path = user/plugins/liveForm
+	url = https://Deester4x4jr@github.com/Deester4x4jr/grav-plugin-liveForm.git
