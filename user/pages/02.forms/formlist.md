@@ -1,5 +1,5 @@
 ---
-title: Marketing Request Forms
+title: 'Marketing Request Forms'
 ---
 
 # {{ page.title }}
