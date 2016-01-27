@@ -1,6 +1,64 @@
 {% extends "forms/field.html.twig" %}
 
-{% block input_attributes %}
-    type="tel"
-    {{ parent() }}
+{% block group %}
+	
+	<div class="phone-input" data-phone-field="{{ fieldID }}">
+	
+		{% block input %}
+			
+			<input
+                {# grav attribute structures #}
+                {% block global_attributes %}
+                    {{ parent() }}
+                {% endblock %}
+                
+                {# required attribute structures #}
+                {% block required_attributes %}
+                    {{ parent() }}
+                {% endblock %}
+                
+                {# input attribute structures #}
+                {% block input_attributes %}
+                    
+                    type="tel"
+                    {# placeholder="000.000.0000" #}
+                    {{ parent() }}
+                {% endblock %}
+            />
+
+		{% endblock %}
+        
+        {# This country list must accurately reflect the available mask list in maskTheNumbers.js #}
+		{% set countryList = {
+			'US': [1,'United States'],
+			'GB': [44,'United Kingdon'],
+			'IN': [91,'India (भारत)'],
+			'NL': [31,'Netherlands (Nederland)'],
+			'DE': [49,'Germany (Deutschland)'],
+			'AT': [43,'Austria (Österreich)'],
+			'RU': [7,'Russia (Россия)'],
+			'JP': [81,'Japan (日本)'],
+			'CN': [86,'China (中国)'],
+			'KR': [82,'South Korea (대한민국)'],
+			'BE': [32,'Belgium (België)'],
+			'SG': [65,'Singapore'],
+		} %}
+
+		<div class="phone-flag-selector">
+			<div class="phone-flag-container">
+				<div id="activeFlag" class="flag-icon"></div>
+				<div class="flag-arrow"></div>
+			</div>
+			<ul class="country-list" style="display: none;" data-phone-field="{{ fieldID }}">
+				{% for country,values in countryList %}
+					{% set def = (loop.index == 1) ? ' default-flag' : '' %}
+					<li class="country{{ def }}" data-dial-code="{{ values[0] }}" data-country-code="{{ country|lower }}">
+						<div class="flag-box"><div class="flag-icon {{ country|lower }}"></div></div><span class="country-name">{{ values[1] }}</span><span class="dial-code">+{{ values[0] }}</span>
+					</li>
+				{% endfor %}
+			</ul>
+		</div>
+	
+	</div>
+
 {% endblock %}

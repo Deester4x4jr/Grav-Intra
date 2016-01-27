@@ -143,3 +143,171 @@ blockquote > blockquote > blockquote > blockquote > blockquote > blockquote > p 
     vertical-align: baseline;
     margin-right: .5rem;
 }
+
+/* Form phone number validation styles */
+
+.phone-input {
+    display: inline-block;
+    position: relative;
+}
+
+.phone-input input[type='tel'] {
+    padding-left: 3.5rem;
+}
+
+.phone-input .phone-flag-selector {
+    height: 100%;
+    position: absolute;
+    bottom: 0;
+    top: 0;
+    cursor: pointer;
+}
+
+.phone-input .phone-flag-container {
+    z-index: 1;
+    position: relative;
+    height: 100%;
+    width: 2.5rem;
+    padding: 0 0 0 .5rem;
+}
+
+.phone-input .phone-flag-container:hover/*,
+.phone-input .country-list .country:hover*/ {
+    background: rgba(185, 185, 185, 0.125);
+}
+
+.phone-flag-container .flag-icon,
+.flag-box .flag-icon {
+    background-image: url(http://jackocnr.com/lib/intl-tel-input/build/img/flags@2x.png);
+    background-size: 5630px 15px;
+    background-repeat: no-repeat;
+    width: 20px;
+    box-shadow: 0 0 .25rem rgba(0,0,0,0.25);
+}
+
+.phone-flag-container .flag-icon {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    margin: auto;
+}
+
+.flag-box {
+    display: inline-block;
+}
+
+/*.phone-flag-selector ul.country-list,
+ul.country-list .country {
+    transition: all 0.125s ease;
+}*/
+
+.phone-flag-selector ul.country-list {
+    list-style: none;
+    position: absolute;
+    z-index: 2;
+    padding: 0;
+    margin: -.25rem 0 0 0;
+    background-color: white;
+    border: 1px solid #CCC;
+    white-space: nowrap;
+    max-height: 200px;
+    overflow-y: scroll;
+    box-shadow: .25rem .25rem 1rem rgba(0,0,0,0.125);
+}
+
+ul.country-list .country {
+    padding: .5rem 5rem .5rem .5rem;
+}
+
+.phone-flag-selector ul.country-list .country:hover {
+    box-shadow: 0 0 1rem rgba(0,0,0,0.25);
+}
+
+.phone-flag-selector ul.country-list .country .flag-box,
+.phone-flag-selector ul.country-list .country .country-name {
+    margin-right: 6px;
+}
+
+.phone-flag-selector ul.country-list .country .dial-code {
+    color: #999;
+}
+
+.phone-flag-selector ul.country-list .country .flag-box,
+.phone-flag-selector ul.country-list .country .country-name,
+.phone-flag-selector ul.country-list .country .dial-code {
+    vertical-align: middle;
+}
+
+.flag-icon.us {
+    height: 11px;
+    background-position: -5241px 0px;
+}
+
+.flag-icon.gb {
+    height: 10px;
+    background-position: -1775px 0px;
+}
+
+.flag-icon.in {
+    height: 14px;
+    background-position: -2413px 0px;
+}
+
+.flag-icon.nl {
+    height: 14px;
+    background-position: -3752px 0px;
+}
+
+.flag-icon.de {
+    height: 12px;
+    background-position: -1269px 0px;
+}
+
+.flag-icon.at {
+    height: 14px;
+    background-position: -264px 0px;
+}
+
+.flag-icon.ru {
+    height: 14px;
+    background-position: -4295px 0px;
+}
+
+.flag-icon.jp {
+    height: 14px;
+    background-position: -2611px 0px;
+}
+
+.flag-icon.cn {
+    height: 14px;
+    background-position: -1049px 0px;
+}
+
+.flag-icon.kr {
+    height: 14px;
+    background-position: -2787px 0px;
+}
+
+.flag-icon.be {
+    width: 18px;
+    height: 15px;
+    background-position: -440px 0px;
+}
+
+.flag-icon.sg {
+    height: 14px;
+    background-position: -4449px 0px;
+}
+
+.phone-flag-container .flag-arrow {
+    position: absolute;
+    top: 50%;
+    margin-top: -.125rem;
+    right: .5rem;
+    width: 0;
+    height: 0;
+    border-left: 3px solid transparent;
+    border-right: 3px solid transparent;
+    border-top: 4px solid #555;
+    cursor: pointer;
+}
