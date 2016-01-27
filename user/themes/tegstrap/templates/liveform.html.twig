@@ -1,0 +1,178 @@
+{% extends 'partials/base.html.twig' %}
+
+{% block content %}
+    
+    {# Include content in the MarkDown file #}
+    {{ content }}
+    
+    {# Display a form message if present #}
+    {% if form.message %}
+        <div class="alert">
+            {{ form.message }}
+        </div>
+    {% endif %}
+    
+    {# Set some vars for processing #}
+    {% set multipart = '' %}
+    {% set method = form.method|upper|default('POST') %}
+    {% for field in form.fields %}
+        {% if (method == 'POST' and field.type == 'file') %}
+            {% set multipart = ' enctype="multipart/form-data"' %}
+        {% endif %}
+    {% endfor %}
+    
+    {# Place the form object (pure-form-aligned) #}
+    {% set formStyle = (form.style) ? ' pure-form-' ~ form.style : '' %}
+    <form class="pure-form{{ formStyle }}"
+          name="{{ form.name }}"
+          action="{{ form.action ? base_url ~ form.action : page.url }}"
+          method="{{ method }}"{{ multipart }}>
+        
+        {# Insert a FieldSet (Maybe make this more verbose, accounting for spacers) #}
+        <fieldset>
+
+            {# Loop through each field and use the right template #}
+            {% for field in form.fields %}
+                {% set value = form.value(field.name) %}
+                <div class="pure-control-group">
+                    {% include "forms/fields/#{field.type}/#{field.type}.html.twig" %}
+                </div>
+                {# If there is a 'help' parameter, add a tooltip #}
+                {% if field.help %}
+                    {{ ('>>>' ~ field.help|e|t)|markdown }}
+                {% endif %}
+            {% endfor %}
+        </fieldset>
+        
+        {# Place the submit and reset buttons #}
+        <div class="buttons">
+            {% for button in form.buttons %}
+                <button class="{{ button.classes|default('button') }} pure-button pure-button-primary"
+                        type="{{ button.type|default('submit') }}">
+                    {{ button.value|t|default('Submit') }}
+                </button>
+            {% endfor %}
+        </div>
+
+        {{ nonce_field('form', 'form-nonce') }}
+    </form>
+
+    {% if form.live %}
+
+        <div class="live-form">
+            <div class="select_html_signature" style="max-width: 700px; line-height: normal;">
+                <table style="margin: 0; border: none;">
+                    <tbody style="font-family: 'Myriad Pro', Gadget, sans-serif; border: none;">
+                        
+                        <!-- Begin Name & Title Row -->
+                        <tr style="border: none; padding: 0;">
+                            <td valign="middle" style="border: none; padding: 0;">
+                                <div style="margin: 0 0 0.25rem 0;">
+                                    
+                                    <!-- Name Section -->
+                                    <div>
+                                        <span id="name" style="font-size: 14px; font-weight: bold;">First Last</span>
+                                    </div>
+                                    
+                                    <!-- Job Title Section -->
+                                    <div>
+                                        <span id="title" style="color: #1c5ea1; font-size: 13px; font-weight: bold; ">Job Title</span>
+                                    </div>
+
+                                    <!-- Company Name Section -->
+                                    <div id="company">
+                                        <!-- If no logo then company name will go here -->
+                                    </div>                                  
+                                </div>
+                            </td>
+                        </tr>
+                        <!-- End Name & Title Row -->
+
+                        <!-- Begin Contact Information Row -->
+                        <tr style="border: none; padding: 0;">
+                            <td valign="middle" style="border: none; padding: 0;">
+                                <div style="margin: 0 0 1rem 0;">
+                                    
+                                    <!-- Office Phone Section -->
+                                    <div id="desk_phone">
+                                        <span style="font-size: 10px; font-weight: bold; padding-right: 0.5rem; display: inline-block; width: 1rem; text-align: center;">O</span>
+                                        <span style="font-size: 11px;"><a id="" href="tel:5107917900" style="text-decoration: none; color: #1c5ea1;">510.791.7900</a></span>
+                                    </div>
+                                    
+                                    <!-- Mobile Phone Section -->
+                                    <div id="cell_phone">
+                                        <span style="font-size: 10px; font-weight: bold; padding-right: 0.5rem; display: inline-block; width: 1rem; text-align: center;">M</span>
+                                        <span style="font-size: 11px;"><a id="" href="tel:4081234567" style="text-decoration: none; color: #1c5ea1;">408.123.4567</a></span>
+                                    </div>
+                                    
+                                    <!-- Email Address Section -->
+                                    <div id="email">
+                                        <span style="font-size: 10px; font-weight: bold; padding-right: 0.5rem; display: inline-block; width: 1rem; text-align: center;">E</span>
+                                        <span style="font-size: 11px;"><a id="email" href="mailto:first.last@tegile.com" style="text-decoration: none; color: #1c5ea1;">first.last@tegile.com</a></span>
+                                    </div>
+                                </div>
+                            </td>
+                        </tr>
+                        <!-- End Contact Information Row -->
+
+                        <!-- Begin Logo Row -->
+                        <tr id="logo" style="border: none; padding: 0;">
+                            <td valign="middle" style="border: none; padding: 0;">
+                                <div style="display: ; text-align: left; margin: 0 0 0.75rem 0;">
+                                    <a href="http://www.tegile.com" target="_blank">
+                                        <img height="40" src="http://webdev.tegile.com/wp-content/uploads/2015/12/logo.png" style="">
+                                    </a>
+                                </div>
+                            </td>
+                        </tr>
+                        <!-- End Logo Row -->
+
+                        <!-- Begin CTA Row -->
+                        <tr style="border: none; padding: 0;">
+                            <td valign="middle" style="border: none; padding: 0;">
+
+                                <!-- Header -->
+                                <div style="display: table-cell; vertical-align: middle;">
+                                    <span style="font-size: 14px; color: #2f2f2f; font-weight: bold;">Learn more about Tegile</span>
+                                </div>
+                                
+                                <!-- SoMe Links -->
+                                <div style="display: table-cell; vertical-align: middle; padding-left: 1rem;">
+                                    <span style="display: inline-block;">
+                                        <a href="http://www.facebook.com/tegilesystems" target="_blank"><img src="http://webdev.tegile.com/wp-content/uploads/2015/12/faceBook.png" width="20" height="20"></a>
+                                        <a href="http://www.twitter.com/tegile" target="_blank"><img src="http://webdev.tegile.com/wp-content/uploads/2015/12/Twitter.png" width="20" height="20"></a>
+                                        <a href="http://www.linkedin.com/company/tegile-systems" target="_blank"><img src="http://webdev.tegile.com/wp-content/uploads/2015/12/linkedIn.png" width="20" height="20"></a>
+                                        <a href="http://www.youtube.com/user/DedupeStorage" target="_blank"><img src="http://webdev.tegile.com/wp-content/uploads/2015/12/youTube.png" width="20" height="20"></a>
+                                        <a href="http://www.tegile.com/blog" target="_blank"><img src="http://webdev.tegile.com/wp-content/uploads/2015/12/blog.png" width="20" height="20"></a>
+                                    </span>
+                                </div>
+                            </td>
+                        </tr>
+                        <!-- End CTA Row -->
+                        
+                        <!-- Begin Link Row -->
+                        <tr style="border: none; padding: 0;">
+                            <td id="cards" valign="middle" style="border: none; padding: 0;">
+                            
+                                <!-- Tiles or a List -->
+
+                            </td>
+                        </tr>
+                        <!-- End Link Row -->
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+    {% endif %}
+
+
+{% endblock %}
+
+{% block javascripts %}
+
+    {% do assets.add('theme://js/plugins/jquery/mask/jquery.mask.js', 98) %}
+    {% do assets.add('theme://js/plugins/jquery/mask/maskTheNumbers.js', 97) %}
+    {{ parent() }}
+    
+{% endblock %}

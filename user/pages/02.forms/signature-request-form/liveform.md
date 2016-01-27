@@ -1,7 +1,6 @@
 ---
 title: 'Email Signature Form'
-imports:
-    - 'live.yaml'
+imports: 'live.yaml'
 form:
     name: email-signature-form
     style: aligned
@@ -41,7 +40,6 @@ form:
             name: section_2
             type: spacer
             title: 'Optional Information'
-            help: 'Please use the following format: 000.000.0000 or +00(00)0000.0000'
         -
             name: desk_phone
             label: Office Number
