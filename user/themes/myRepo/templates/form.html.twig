@@ -1,0 +1,66 @@
+{% extends 'partials/base.html.twig' %}
+{% block javascripts %}
+
+    {% do assets.add('theme://js/plugins/jquery/mask/jquery.mask.js', 98) %}
+    {% do assets.add('theme://js/plugins/jquery/mask/maskTheNumbers.js', 97) %}
+
+{% endblock %}
+
+{% block content %}
+	
+	{# Display a form message if present #}
+    {% if form.message %}
+    	<div class="alert">
+    		{{ form.message }}
+    	</div>
+    {% endif %}
+	
+	{# Set some vars for processing #}
+	{% set multipart = '' %}
+	{% set method = form.method|upper|default('POST') %}
+	{% for field in form.fields %}
+	    {% if (method == 'POST' and field.type == 'file') %}
+	        {% set multipart = ' enctype="multipart/form-data"' %}
+	    {% endif %}
+	{% endfor %}
+
+	<div class="centered"><h1>{{ page.title }}</h1></div>
+	
+	{# Place the form object (pure-form-aligned) #}
+	{% set formStyle = (form.style) ? ' pure-form-' ~ form.style : '' %}
+	<form class="pure-form{{ formStyle }}"
+		  name="{{ form.name }}"
+		  id="{{ form.name }}"
+	      action="{{ form.action ? base_url ~ form.action : page.url }}"
+	      method="{{ method }}"{{ multipart }}>
+		
+		{# Insert a FieldSet (Maybe make this more verbose, accounting for spacers) #}
+		<fieldset>
+
+			{# Loop through each field and use the right template #}
+			{% for field in form.fields %}
+				{% set value = form.value(field.name) %}
+				<div class="pure-control-group">
+					{% include "forms/fields/#{field.type}/#{field.type}.html.twig" %}
+				</div>
+				{# If there is a 'help' parameter, add a tooltip #}
+				{% if field.help %}
+					{{ ('>>>' ~ field.help|e|t)|markdown }}
+	            {% endif %}
+			{% endfor %}
+		</fieldset>
+		
+		{# Place the submit and reset buttons #}
+		<div class="buttons">
+			{% for button in form.buttons %}
+				<button class="button {{ button.classes|default('button') }} pure-button pure-button-primary"
+						type="{{ button.type|default('submit') }}">
+					{{ button.value|t|default('Submit') }}
+				</button>
+			{% endfor %}
+		</div>
+
+		{{ nonce_field('form', 'form-nonce') }}
+	</form>
+
+{% endblock %}

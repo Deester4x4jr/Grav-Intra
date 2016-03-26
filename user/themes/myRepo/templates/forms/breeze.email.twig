@@ -1,0 +1,23 @@
+{% set conditions = {
+			'graphics-request-form': 'josh@tegile.com',
+			'website-request-form': 'conor.self@tegile.com' }
+%}
+
+<br><br>
+Task Description
+<br><br>
+{{ form.value.description|nl2br|raw }}
+<br><br>
+
+{# Below are Breeze specific tags to modify the task properties #}
+@assign {{ conditions[form.name] }}
+<br>
+@tag request_form,{{ form.value.default_tags|e }},{{ form.value.priority|e }}
+<br>
+@duedate {{ form.value.due_date|date("M j Y") }}
+<br>
+@list Requested
+
+{# Information to denote who submitted the task, incase they don't have a Breeze Account #}
+<br><br><br>
+<em style="color: #8e8e93">Submitted via webform by {{ form.value.name|e }} <b>[ {{ form.value.email|e }} ]</b></em>

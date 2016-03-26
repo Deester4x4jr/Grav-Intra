@@ -1,0 +1,3 @@
+{# <a class="github-link" href="{{ theme_config.github.tree ~  ('/'~page.filePathClean)|replace({'/user/':''}) }}"><i class="fa fa-github-square"></i> {{ 'THEME_LEARN2_GITHUB_EDIT_THIS_PAGE'|t }}</a> #}
+{% set pagePath = page.filePathClean|replace({'user/':''}) %}
+<a class="github-link" href="mailto:josh@tegile.com?Subject=%5BTegile%20Repo%5D%20-%20Errors%20Found%21&Body=%0A%0A-------------------------------------------------------%0APlease%20type%20ABOVE%20this%20line%0A%0APage%20Source%3A%20{{ pagePath }}">{{ 'THEME_MYREPO_GITHUB_EDIT_THIS_PAGE'|t }} <i class="fa fa-exclamation-triangle"></i></a>

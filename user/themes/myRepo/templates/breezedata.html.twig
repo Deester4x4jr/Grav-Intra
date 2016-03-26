@@ -1,0 +1,73 @@
+{% extends 'partials/base.html.twig' %}
+
+{% import _self as breeze %}
+
+{% set ignore = ['spacer'] %}
+{% set longType = ['textarea','file'] %}
+{% set short = [] %}
+{% set long = [] %}
+
+{% macro fieldBlock(label,value,length) %}
+
+    <div>
+        <strong>{{ label }}:</strong>
+        
+        {% if length == 'long' %}
+            <p class="indented">{{ value }}</p>
+        {% else %}
+            <span>&nbsp;&nbsp;</span><em>{{ value }}</em>
+        {% endif %}
+    </div>
+
+{% endmacro %}
+
+{% block content %}
+
+    <div class="notices green"><b>Success!</b> Your form was successfully submitted!  Someone will reach out to you within 24 hours to touch base.</div>
+    <p>Here is the summary of what you wrote to us:</p>
+
+    {% block field %}
+        
+        {% for field in form.fields %}
+            
+            {% if (field.type not in ignore) and (string(form.value(field.name)|e)) %}
+
+                {% if field.type in longType %}
+
+                    {% set long = long|merge([field]) %}
+
+                {% else %}
+
+                    {% set short = short|merge([field]) %}
+
+                {% endif %}
+
+            {% endif %}
+
+        {% endfor %}
+
+        {% set ordered = short|merge(long) %}
+
+        {% for field in ordered %}
+
+            {% set value = (field.type == 'radio') ? form.options[form.value(field.name)|e] : string(form.value(field.name)|e) %}
+            
+            {% if field.type == 'file' %}
+                {% set value = '' %}
+                {% for key in form.value(field.name)|keys %}
+                    {% set value = (value ~ '<img src="/' ~ key ~ '"  />') %}
+                {% endfor %}
+                {% set value = '<div class="thumbStrip">' ~ value ~ '</div>' %}
+            {% endif %}
+            
+            {% set length = (field.type in longType) ? 'long' : 'short' %}
+
+            {{ breeze.fieldBlock(field.label,value,length) }}
+
+        {% endfor %}
+
+    {% endblock %}
+
+    {{ content }}
+
+{% endblock %}

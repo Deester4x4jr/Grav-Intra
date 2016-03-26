@@ -1,0 +1,5 @@
+enabled: true
+active: true
+selectors: 'h3,h4'
+placement: left
+visible: hover

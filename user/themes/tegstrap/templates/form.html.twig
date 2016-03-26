@@ -25,6 +25,7 @@
 	{% set formStyle = (form.style) ? ' pure-form-' ~ form.style : '' %}
 	<form class="pure-form{{ formStyle }}"
 		  name="{{ form.name }}"
+		  id="{{ form.name }}"
 	      action="{{ form.action ? base_url ~ form.action : page.url }}"
 	      method="{{ method }}"{{ multipart }}>
 		
@@ -56,5 +57,13 @@
 
 		{{ nonce_field('form', 'form-nonce') }}
 	</form>
+
+{% endblock %}
+
+{% block javascripts %}
+
+    {% do assets.add('theme://js/plugins/jquery/mask/jquery.mask.js', 98) %}
+    {% do assets.add('theme://js/plugins/jquery/mask/maskTheNumbers.js', 97) %}
+    {{ parent() }}
 
 {% endblock %}

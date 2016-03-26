@@ -1,0 +1,124 @@
+/*Custom CSS for the myRepo Theme*/
+
+/*To Top Button Style*/
+/*.totop {
+    position: absolute;
+    bottom: 10px;
+    padding-left: 50%;
+    z-index: 99999;
+    border-radius: 50px;
+    text-align: center;
+    line-height: 50px;
+    font-size: 50px;
+    overflow: visible;
+    cursor: pointer;
+    opacity: .5;
+}
+
+.totop i {
+    margin-left: -50%;
+}*/
+
+/*Header Styles*/
+h3 {
+    margin-top: 4rem;
+    border-bottom: 4px solid #f0f2f4;
+}
+
+/*Styles for Anchors*/
+.anchorjs-link {
+  transition: all .25s linear;
+  line-height: inherit !Important;
+}
+
+*:hover > .anchorjs-link {
+  margin-left: -1.125em !important;
+}
+
+/*Various Styles*/
+p {
+    margin-top: 0.5rem;
+}
+
+.nomargins {
+    margin: 0;
+}
+
+.nopadding {
+    padding: 0;
+}
+
+.indented {
+    margin-left: 2rem !Important;
+}
+
+.thumbStrip img {
+    margin: 0 !Important;
+    padding: 0 1rem !Important;
+    max-height: 150px;
+    display: inline-block;
+}
+
+.left {
+    text-align: left;
+}
+
+.centered {
+    text-align: center;
+}
+
+.right {
+    text-align: right;
+}
+
+.narrow {
+    margin-left: auto;
+    margin-right: auto;
+    width: 75%;
+}
+
+/*Form Styles*/
+.pure-form {
+    width: 75%;
+    margin: 0 auto;
+}
+
+.pure-form fieldset {
+    border: none;
+}
+
+.pure-form .buttons {
+    text-align: center;
+}
+
+
+/*Button Styles*/
+.button {
+    border-radius: 150px;
+    padding: 7px 20px;
+    margin: 0 0.5rem;
+}
+
+.button:active {
+        margin: 2px 0.5rem -2px 0.5rem;
+}
+
+.button.good {
+    background-color: #16CA94;
+    box-shadow: 0 3px 0 #13AE62;
+}
+
+.button.bad {
+    background-color: #FF5B5B;
+    box-shadow: 0 3px 0 #E04E4E;
+}
+
+.button.good:hover {
+    background: #12AF80;
+    box-shadow: 0 3px 0 #0F884C;
+}
+
+.button.bad:hover {
+    background: #E45050;
+    box-shadow: 0 3px 0 #CA4545;
+}

@@ -1,0 +1,53 @@
+{% macro loop(page) %}
+    {% for p in page.children.visible %}
+        {% set current_page = (p.active or p.activeChild) ? 'active' : '' %}
+        <li class="{{ current_page }}" data-coolmenu-name="{{ p.menu|lower|replace(' ', '_') }}">
+            {{ _self.anchor(p) }}
+            {# {% if p.children.visible.count > 0 %}
+                <ul data-coolmenu-parent="{{ p.menu|lower|replace(' ', '_') }}">
+                    <li class="menu_back">Back</li>
+                    {{ _self.loop(p) }}
+                </ul>
+            {% endif %} #}
+        </li>
+    {% endfor %}
+{% endmacro %}
+
+{% macro entry(item) %}
+    {% if item.header.icon %}
+        <i class="fa fa-{{ item.header.icon }}"></i>
+    {% endif %}
+    {{ item.menu }}
+{% endmacro %}
+
+{% macro anchor(item) %}
+    {% if item.routable %}
+        <a href="{{ item.url }}">
+            {{ _self.entry(item) }}
+        </a>
+    {% else %}
+        {{ _self.entry(item) }}
+    {% endif %}
+{% endmacro %}
+
+<ul class="navigation">
+    {{ dump(theme) }}
+    {% if theme_config.dropdown.enabled %}
+        {{ _self.loop(pages) }}
+    {% else %}
+        {% for page in pages.children.visible %}
+            {% set current_page = (page.active or page.activeChild) ? 'active' : '' %}
+            <li class="{{ current_page }}">
+                {{ _self.anchor(page) }}
+            </li>
+        {% endfor %}
+    {% endif %}
+    {% for mitem in site.menu %}
+        <li>
+            {{ _self.anchor(mitem) }}
+        </li>
+    {% endfor %}
+    {# {% if config.plugins.login.enabled and grav.user.username %}
+        <li><i class="fa fa-lock"></i> {% include 'partials/login-status.html.twig' %}</li>
+    {% endif %} #}
+</ul>

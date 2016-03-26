@@ -1,0 +1,68 @@
+email-signature-form:
+    shell: |-
+        <div class="select_html_signature" style="max-width:700px;line-height:normal"><table style="margin:0;border:none"><tbody style="font-family:'Myriad Pro',Gadget,sans-serif;border:none"><tr style="border:none;padding:0"><td valign="middle" style="border:none;padding:0"><div style="margin:0 0 .25rem 0"><div id="live_name" style="font-size:14px;font-weight:700">First Last</div><div id="live_title" style="color:#1c5ea1;font-size:13px;font-weight:700">Job Title</div><div id="live_company" style="color:#1c5ea1;font-size:13px;font-weight:700"></div></div><tr style="border:none;padding:0"><td valign="middle" style="border:none;padding:0"><div style="margin:0 0 1rem 0"><div id="live_desk_phone"></div><div id="live_cell_phone"></div><div id="live_email"></div></div><tr id="live_logo" style="border:none;padding:0"><tr style="border:none;padding:0"><td valign="middle" style="border:none;padding:0"><div style="display:table-cell;vertical-align:middle"><span style="font-size:14px;color:#2f2f2f;font-weight:700">Learn more about Tegile</span></div><div style="display:table-cell;vertical-align:middle;padding-left:1rem"><span style="display:inline-block"><a href="http://www.facebook.com/tegilesystems" target="_blank"><img src="http://webdev.tegile.com/wp-content/uploads/2015/12/faceBook.png" width="20" height="20"></a> <a href="http://www.twitter.com/tegile" target="_blank"><img src="http://webdev.tegile.com/wp-content/uploads/2015/12/Twitter.png" width="20" height="20"></a> <a href="http://www.linkedin.com/company/tegile-systems" target="_blank"><img src="http://webdev.tegile.com/wp-content/uploads/2015/12/linkedIn.png" width="20" height="20"></a> <a href="http://www.youtube.com/user/DedupeStorage" target="_blank"><img src="http://webdev.tegile.com/wp-content/uploads/2015/12/youTube.png" width="20" height="20"></a> <a href="http://www.tegile.com/blog" target="_blank"><img src="http://webdev.tegile.com/wp-content/uploads/2015/12/blog.png" width="20" height="20"></a></span></div><tr style="border:none;padding:0"><td id="live_cta" valign="middle" style="border:none;padding:0;display:none"><div id="live_cta_img" style="border-top:3px solid #1c5ea1;font-size:14px;color:#1c5ea1"><div id="live_card_1" style="margin:1rem 2rem 0 0;display:inline-block"></div><div id="live_card_2" style="margin:1rem 2rem 0 0;display:inline-block"></div><div id="live_card_3" style="margin:1rem 2rem 0 0;display:inline-block"></div></div><div id="live_cta_txt" style="border-top:3px solid #1c5ea1;font-size:14px;color:#1c5ea1;display:none"><ul><li id="live_link_1"></li><li id="live_link_2"></li><li id="live_link_3"></li></ul></div><div id="live_cta_non" style="display:none"></div></table></div>
+    actions:
+        desk_phone:
+            # _val:
+                # field_id_1: Any Valid Text or Javascript/jQuery
+                # field_id_2: Any Valid Text or Javascript/jQuery
+                # field_id_3: Any Valid Text or Javascript/jQuery
+            _val: |-
+                <span style="font-size:10px;font-weight:700;padding-right:.5rem;display:inline-block;width:1rem;text-align:center">O</span> <span style="font-size:11px"><a id="desk_phone_link" href="tel:0000000000" style="text-decoration:none;color:#1c5ea1">000.000.0000</a></span>
+            _subs:
+                desk_phone_link:
+                    html: "$('#desk_phone').val()"
+                    attr:
+                        href: "'tel:+'+$('#desk_phone').attr('data-dial-code')+$('#desk_phone').cleanVal()"
+                    #     alt: some stuff
+                    #     title: "$('#desk_phone').cleanVal()"
+                    # css:
+                    #     color: red
+                    #     padding: 0 0 0 100px
+                    # addClass: someClass
+                    # _action: "$('#cell_phone').hide()"
+        cell_phone:
+            _val: |-
+                <span style="font-size:10px;font-weight:700;padding-right:.5rem;display:inline-block;width:1rem;text-align:center">M</span> <span style="font-size:11px"><a id="cell_phone_link" href="tel:0000000000" style="text-decoration:none;color:#1c5ea1">000.000.0000</a></span>
+            _subs:
+                cell_phone_link:
+                    html: "$('#cell_phone').val()"
+                    attr:
+                        href: "'tel:+'+$('#cell_phone').attr('data-dial-code')+$('#cell_phone').cleanVal()"
+        email:
+            _val: |-
+                <span style="font-size:10px;font-weight:700;padding-right:.5rem;display:inline-block;width:1rem;text-align:center">E</span> <span style="font-size:11px"><a id="email_link" href="mailto:first.last@tegile.com" style="text-decoration:none;color:#1c5ea1">first.last@tegile.com</a></span>
+            _subs:
+                email_link:
+                    attr:
+                        href: "'mailto:'+$('#email').val()"
+        # cta:
+        #     img:
+        #         _action: "$(this).show().siblings().hide()"
+        #     txt:
+        #         _action: "$(this).show().siblings().hide()"
+        #     non:
+        #         _action: "$(this).show().siblings().hide()"
+        logo:
+            checked: |-
+                    <td valign="middle" style="border:none;padding:0"><div style="text-align:left;margin:0 0 .75rem 0"><a href="http://www.tegile.com" target="_blank"><img height="40" src="http://webdev.tegile.com/wp-content/uploads/2015/12/logo.png"></a></div>
+            unchecked:
+                live_company: 'Tegile Systems'
+        # links:
+        #     options:
+        #         link_1: |-
+        #             Stuff
+        #         link_2: |-
+        #             Stuff
+        #         link_3: |-
+        #             Stuff
+        #         link_4: |-
+        #             Stuff
+        #         link_5: |-
+        #             Stuff
+        #         link_6: |-
+        #             Stuff
+        #         link_7: |-
+        #             Stuff
+        #         link_8: |-
+        #             Stuff

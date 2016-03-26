@@ -1,10 +1,9 @@
 absolute_urls: false
 timezone: America/Los_Angeles
-default_locale: null
 param_sep: ':'
 wrapped_site: false
+reverse_proxy_setup: false
 languages:
-  supported: {  }
   include_default_lang: true
   translations: true
   translations_fallback: true
@@ -12,10 +11,10 @@ languages:
   http_accept_language: true
   override_locale: false
 home:
-  alias: /home
+  alias: /welcome
   hide_in_urls: false
 pages:
-  theme: tegstrap
+  theme: myRepo
   order:
     by: default
     dir: asc
@@ -29,12 +28,12 @@ pages:
   process:
     markdown: true
     twig: true
-  twig_first: false
+  twig_first: true
   events:
     page: true
     twig: true
   markdown:
-    extra: false
+    extra: true
     auto_line_breaks: false
     auto_url_links: false
     escape_markup: false
@@ -49,7 +48,6 @@ pages:
     - json
     - rss
     - atom
-  append_url_extension: ''
   expires: 604800
   last_modified: false
   etag: false
@@ -66,7 +64,7 @@ pages:
   url_taxonomy_filters: true
   markdown_extra: false
 cache:
-  enabled: true
+  enabled: false
   check:
     method: file
   driver: auto
@@ -82,13 +80,13 @@ twig:
   undefined_filters: true
   umask_fix: false
 assets:
-  css_pipeline: false
+  css_pipeline: true
   css_minify: true
   css_minify_windows: false
   css_rewrite: true
-  js_pipeline: false
+  js_pipeline: true
   js_minify: true
-  enable_asset_timestamp: false
+  enable_asset_timestamp: true
   collections:
     jquery: 'system://assets/jquery/jquery-2.1.4.min.js'
 errors:
@@ -107,8 +105,6 @@ images:
 media:
   enable_media_timestamp: false
   upload_limit: 0
-  unsupported_inline_types: {  }
-  allowed_fallback_types: {  }
 session:
   enabled: true
   timeout: 1800

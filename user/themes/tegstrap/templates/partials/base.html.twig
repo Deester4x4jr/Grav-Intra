@@ -1,3 +1,4 @@
+{% set theme_config = attribute(config.themes, config.system.pages.theme) %}
 <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -43,7 +44,7 @@
             {# {% do assets.add('theme://css/bootstrap.min.css',109) %} #}
 
             {# Include FontAwesome, because its awesome #}
-            {% do assets.add('theme://css/font-awesome.min.css',102) %}
+            {% do assets.add('https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css',102) %}
 
             {# Include pure CSS #}
             {% do assets.add('theme://css/pure/minified/pure-min.css',101) %}
@@ -57,6 +58,7 @@
         {{ assets.css() }}
 
         {% block javascripts %}
+            {% do assets.add('theme://js/custom.js', 100) %}
             {% do assets.add('https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js', 99) %}
             {% do assets.add('theme://js/bootstrap.min.js') %}
 
@@ -73,18 +75,49 @@
 
       <body>
 
-        {# include the header + navigation #}
-        {% include 'partials/header.html.twig' %}
+        {# My cool new CoolMenu #}
+        <section id="coolMenu">
+            <button class="berger">
+                <span>toggle menu</span>
+            </button>
+            {# {% block header_extra %}{% endblock %}
+            {% if config.plugins.langswitcher.enabled %}
+                {% include 'partials/langswitcher.html.twig' %}
+            {% endif %} #}
+            {% block site_menu %}
+                {% include 'partials/navigation.html.twig' %}
+            {% endblock %}
+        </section>
+    
+        {# div to cover everything while the cool menu is open #}
+        <div id="coverall"></div>
 
-        <div class="container">
-            {% block content %}{% endblock %}
-        </div>
+        {# main body class to hold ALL content (header, body, footer) #}
+        <div class="siteBody">
 
-        <div class="footer">
-            <div class="container">
-                <p class="text-muted">Bootstrap Theme for <a href="http://getgrav.org">Grav</a></p>
+            <header id="header">
+                {# include the header + navigation #}
+                {% include 'partials/header.html.twig' %}
+            </header>
+
+            <section id="body" class="container">
+                {% block content %}{% endblock %}
+            </div>
+
+            <footer id="footer">
+                {# <div class="container">
+                    <p class="text-muted">Bootstrap Theme for <a href="http://getgrav.org">Grav</a></p>
+                </div> #}
             </div>
         </div>
+
+        {# for the sidebar navigation #}
+        {# <div class="sb-slidebar sb-left sb-width-thin">
+            <div id="panel">
+                {% include 'partials/navigation.html.twig' %}
+            </div>
+        </div> #}
+    </div>
 
     </body>
     {% block bottom %}{% endblock %}

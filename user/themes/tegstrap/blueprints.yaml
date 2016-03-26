@@ -1,0 +1,34 @@
+name: tegstrap
+version: 0.0.1
+description: "Testing a bootstrappy pureish theme for my project"
+icon: gears
+author:
+  name: SquirrelFaktory
+  email: josh@desherlia.net
+  # url: http://getgrav.org
+homepage: https://github.com/deester4x4jr
+# demo: http://demo.getgrav.org/blog-skeleton
+keywords: bootstrap, theme, core, modern, fast, responsive, html5, css3, pure
+# bugs: https://github.com/getgrav/grav-theme-antimatter/issues
+license: MIT
+
+form:
+  validation: loose
+  fields:
+    default_lang:
+      type: text
+      size: x-small
+      label: Default lang
+      default: 'en'
+      validate:
+        type: text
+    dropdown.enabled:
+        type: toggle
+        label: Dropdown in navbar
+        highlight: 1
+        default: 1
+        options:
+          1: Enabled
+          0: Disabled
+        validate:
+          type: bool

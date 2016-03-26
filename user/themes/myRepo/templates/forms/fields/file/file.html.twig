@@ -1,0 +1,26 @@
+{% extends "forms/field.html.twig" %}
+{% set defaults = config.plugins.form %}
+{% set files = defaults.files|merge(field|default([])) %}
+
+{% block input %}
+    <input
+        {# grav attribute structures #}
+        {% block global_attributes %}
+            {{ parent() }}
+        {% endblock %}
+        
+        {# required attribute structures #}
+        {% block required_attributes %}
+            name="{{ (scope ~ field.name)|fieldName ~ (files.multiple ? '[]' : '[]') }}"
+            {{ parent() }}
+        {% endblock %}
+
+        {# input attribute structures #}
+        {% block input_attributes %}
+            type="file"
+            {% if files.multiple %}multiple="multiple"{% endif %}
+            {% if files.accept %}accept="{{ files.accept|join(',') }}"{% endif %}
+            {{ parent() }}
+        {% endblock %}
+     />
+{% endblock %}

@@ -1,26 +1,13 @@
-<nav class="navbar navbar-default navbar-inverse navbar-static-top" role="navigation">
-    <div class="container">
-        <div class="navbar-header">
-            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                <span class="sr-only">Toggle navigation</span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-            </button>
-            {% set admin_status = (grav.user.username) ? '/boss' : '#' %}
-            <a class="navbar-brand" href="{{ admin_status }}">
-                Tegile
-            </a>
+{% block header %}
+    <section id="navbar">
+        <div class="logo">
+            <h2><a href="{{ base_url == '' ? '/' : base_url }}">{{ config.site.title }}</a></h2>
         </div>
-        <div class="navbar-collapse collapse">
-            <ul class="nav navbar-nav navbar-right">
-                {% for page in pages.children %}
-                {% if page.visible %}
-                {% set current_page = (page.active or page.activeChild) ? 'active' : '' %}
-                <li class="{{ current_page }}"><a href="{{ page.url }}">{{ page.menu }}</a></li>
-                {% endif %}
-                {% endfor %}
-            </ul>
+        <div class="user">
+            <h4>Welcome{{ (user) ? user : ' dude!' }}</h4>
+            <div class="bubble">
+                <img src="https://lh3.googleusercontent.com/-v_tcL1JuD4E/AAAAAAAAAAI/AAAAAAAAAVI/8Lbaq9-Yj_M/photo.jpg" />
+            </div>
         </div>
-    </div>
-</nav>
+    </section>
+{% endblock %}
