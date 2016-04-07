@@ -1,5 +1,11 @@
 ---
 title: 'Email Signature Form'
+external_links:
+    process: true
+    title: false
+    no_follow: true
+    mode: active
+    target: _blank
 imports:
     - live.yaml
 form:
@@ -92,5 +98,4 @@ form:
 ---
 
 # {{ page.title }}
-
 ---
