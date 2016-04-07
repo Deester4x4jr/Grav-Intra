@@ -16,11 +16,4 @@ $(document).ready( function () {
     $("select").on("click", "option", function (event) {
         selectLimit($(this));
     });
-
-    $('.berger').click( function () {
-        $(this).toggleClass('is-open');
-        $(this).parent().toggleClass('is-open');
-        $('#coverall').toggleClass('blocking');
-        $('body').toggleClass('no-scroll');
-    })
 });
