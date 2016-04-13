@@ -6,7 +6,7 @@ routes:
 
 session_ss: "fGVjnEAzMH3YDwXazVbIO27YTeydGw5eY6hA7w16i5DLhKNKHea8A3S5c80J6ZSM"
 
-private_site: true
+private_site: false
 private_tag: hidden
 enable_username: false
 

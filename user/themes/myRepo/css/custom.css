@@ -19,6 +19,15 @@
     margin-left: -50%;
 }*/
 
+/*Modal Overwrites*/
+.blocker {
+    z-index: 11000 !Important;
+}
+
+.modal {
+    z-index: 12000 !Important;
+}
+
 /*Header Styles*/
 h3 {
     margin-top: 4rem;
@@ -108,18 +117,28 @@ p {
     box-shadow: 0 3px 0 #13AE62;
 }
 
+.button.soso {
+    background-color: #FFB65B;
+    box-shadow: 0 3px 0 #FFA75B;
+}
+
 .button.bad {
     background-color: #FF5B5B;
     box-shadow: 0 3px 0 #E04E4E;
 }
 
 .button.good:hover {
-    background: #12AF80;
+    background-color: #12AF80;
     box-shadow: 0 3px 0 #0F884C;
 }
 
+.button.soso:hover {
+    background-color: #FFA75B;
+    box-shadow: 0 3px 0 #FF905B;
+}
+
 .button.bad:hover {
-    background: #E45050;
+    background-color: #E45050;
     box-shadow: 0 3px 0 #CA4545;
 }
 

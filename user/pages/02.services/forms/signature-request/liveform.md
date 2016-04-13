@@ -8,6 +8,12 @@ external_links:
     target: _blank
 imports:
     - live.yaml
+    - hidden.yaml
+anchors:
+    active: false
+routes:
+    aliases:
+        - /email-sig
 form:
     name: email-signature-form
     style: aligned
@@ -65,13 +71,11 @@ form:
             title: Extras
         -
             name: links
-            label: 'CTA''s'
+            label: 'Call to Action links'
             type: select
-            multiple: true
             limit: 3
+            multiple: true
             help: 'Please choose up to 3'
-            validate:
-                required: true
             options:
                 link_1: 'Company Story'
                 link_2: 'Request a Demo'
@@ -89,13 +93,47 @@ form:
             options:
                 img: 'Full Pictures'
                 txt: 'Bulleted List'
-                non: None
         -
-            name: logo
+            name: sig_logo
             label: 'Display the Logo?'
             type: checkbox
             help: 'Select this option if you would like the logo to be in your signature'
+        -
+            name: client
+            type: spacer
+            title: 'Choose your email client'
+    buttons:
+        -
+            type: button
+            value: Gmail
+            classes: 'normal doModal'
+            target: gmail
+        -
+            type: button
+            value: 'Apple Mail'
+            classes: 'good doModal'
+            target: apple_mail
+        -
+            type: button
+            value: Thunderbird
+            classes: 'soso doModal'
+            target: thunderbird
+        -
+            type: button
+            value: 'Microsoft Outlook'
+            classes: 'bad doModal'
+            target: outlook
 ---
 
-# {{ page.title }}
+<div style="display: none;">
+{% for fid,cont in page.header.imports.hidden %}
+    <div id='{{ fid  }}'>{{ cont }}</div>
+{% endfor %}
+</div>
+
+<div class="centered" style="margin-bottom: 5rem;">
+    <h4>Thanks for using the form!</h4>
+    <p>When you are finished feel free to close this window</p>
+    <p><span style="font-size: 10px; color: rgba(0,209,192,1);">Coded with <i class="fa fa-glass"></i> by <i class="fa fa-github-alt"></i></span></p>
+</div>
 ---

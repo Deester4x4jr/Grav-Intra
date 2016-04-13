@@ -17,6 +17,7 @@
         {% do assets.addCss('theme://css/custom.css',100) %}
         {% do assets.addCss('theme://css/font-awesome.min.css',100) %}
         {% do assets.addCss('theme://css/featherlight.min.css') %}
+        {% do assets.addCss('theme://js/plugins/jquery/modal/jquery.modal.css') %}
 
         {% if browser.getBrowser == 'msie' and browser.getVersion >= 8 and browser.getVersion <= 9 %}
             {% do assets.addCss('theme://css/nucleus-ie9.css') %}
@@ -34,6 +35,9 @@
         {% do assets.addJs('theme://js/clipboard.min.js') %}
         {% do assets.addJs('theme://js/jquery.scrollbar.min.js') %}
         {% do assets.addJs('theme://js/learn.js') %}
+        {% do assets.addJs('https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/1.5.8/clipboard.min.js') %}
+        {% do assets.addJs('theme://js/plugins/jquery/modal/jquery.modal.min.js') %}
+        {% do assets.addJs('theme://js/modals.js') %}
         {{ assets.js() }}
     {% endblock %}
 

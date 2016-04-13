@@ -6,6 +6,9 @@ external_links:
     no_follow: true
     mode: active
     target: _blank
+taxonomy:
+    tag:
+        - hidden
 ---
 
 # Welcome
