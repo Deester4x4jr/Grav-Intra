@@ -36,15 +36,15 @@ email-signature-form:
         sig_logo:
             checked:
                 live_logo: |-
-                    <td valign="middle" style="border:none;padding:0"><div style="text-align:left;margin:0 0 .75rem 0"><a href="http://www.tegile.com" target="_blank"><img height="40" src="http://webdev.tegile.com/wp-content/uploads/2015/12/logo.png" style="margin: 0; display: inline-block; text-align: left;"></a></div>
+                    <td valign="middle" style="border:none;padding:0"><div style="text-align:left;margin:0 0 .75rem 0"><a href="http://www.tegile.com" target="_blank"><img height="40" src="h$(location).prop('protocol')+'//'+$(location).prop('hostname')+':'+$(location).prop('port')+'/email-sig/logo.png" style="margin: 0; display: inline-block; text-align: left;"></a></div>
             unchecked:
                 live_company: 'Tegile Systems'
         links:
             'Company Story':
                 live_cta_img:
                     fn.append: |-
-                        <div id="card_1" style="margin:1rem 2rem 0 0;display:inline-block"><a style="color:#1c5ea1;text-decoration:none" href="tegile-link"><img style="margin:0;" src="image-source" width="150"></a></div>
-                    this.action: $('#card_1 a').attr('href','http://www.tegile.com/resource/tegile-company-story-video/?utm_source=email&utm_medium=signature&utm_campaign=company-story').find('img').attr('src',$(location).prop('protocol')+'//'+$(location).prop('hostname')+':'+$(location).prop('port')+'/services/forms/signature-request/story_card.png');
+                        <div id="card_1" style="margin-top:1rem;margin-right:2rem;margin-bottom:0;margin-left:0;display:inline-block"><a style="color:#1c5ea1;text-decoration:none" href="tegile-link"><img style="margin:0;" src="image-source" width="150"></a></div>
+                    this.action: $('#card_1 a').attr('href','http://www.tegile.com/resource/tegile-company-story-video/?utm_source=email&utm_medium=signature&utm_campaign=company-story').find('img').attr('src',$(location).prop('protocol')+'//'+$(location).prop('hostname')+':'+$(location).prop('port')+'/email-sig/story_card.png');
                 live_cta_txt:
                     fn.append: |-
                         <li id="link_1"><a style="color:#1c5ea1;text-decoration:none" href="tegile-link"><span style="display:block">Title</span></a></li>
@@ -52,8 +52,8 @@ email-signature-form:
             'Request a Demo':
                 live_cta_img:
                     fn.append: |-
-                        <div id="card_2" style="margin:1rem 2rem 0 0;display:inline-block"><a style="color:#1c5ea1;text-decoration:none" href="tegile-link"><img style="margin:0;" src="image-source" width="150"></a></div>
-                    this.action: $('#card_2 a').attr('href','http://www.tegile.com/resource/three-minute-intelliflash-demo/?utm_source=email&utm_medium=signature&utm_campaign=demo').find('img').attr('src',$(location).prop('protocol')+'//'+$(location).prop('hostname')+':'+$(location).prop('port')+'/services/forms/signature-request/demo_card.png');
+                        <div id="card_2" style="margin-top:1rem;margin-right:2rem;margin-bottom:0;margin-left:0;display:inline-block"><a style="color:#1c5ea1;text-decoration:none" href="tegile-link"><img style="margin:0;" src="image-source" width="150"></a></div>
+                    this.action: $('#card_2 a').attr('href','http://www.tegile.com/resource/three-minute-intelliflash-demo/?utm_source=email&utm_medium=signature&utm_campaign=demo').find('img').attr('src',$(location).prop('protocol')+'//'+$(location).prop('hostname')+':'+$(location).prop('port')+'/email-sig/demo_card.png');
                 live_cta_txt:
                     fn.append: |-
                         <li id="link_2"><a style="color:#1c5ea1;text-decoration:none" href="tegile-link"><span style="display:block">Title</span></a></li>
@@ -61,8 +61,8 @@ email-signature-form:
             'Request Pricing':
                 live_cta_img:
                     fn.append: |-
-                        <div id="card_3" style="margin:1rem 2rem 0 0;display:inline-block"><a style="color:#1c5ea1;text-decoration:none" href="tegile-link"><img style="margin:0;" src="image-source" width="150"></a></div>
-                    this.action: $('#card_3 a').attr('href','http://www.tegile.com/pricing/?utm_source=email&utm_medium=signature&utm_campaign=pricing').find('img').attr('src',$(location).prop('protocol')+'//'+$(location).prop('hostname')+':'+$(location).prop('port')+'/services/forms/signature-request/pricing_card.png');
+                        <div id="card_3" style="margin-top:1rem;margin-right:2rem;margin-bottom:0;margin-left:0;display:inline-block"><a style="color:#1c5ea1;text-decoration:none" href="tegile-link"><img style="margin:0;" src="image-source" width="150"></a></div>
+                    this.action: $('#card_3 a').attr('href','http://www.tegile.com/pricing/?utm_source=email&utm_medium=signature&utm_campaign=pricing').find('img').attr('src',$(location).prop('protocol')+'//'+$(location).prop('hostname')+':'+$(location).prop('port')+'/email-sig/pricing_card.png');
                 live_cta_txt:
                     fn.append: |-
                         <li id="link_3"><a style="color:#1c5ea1;text-decoration:none" href="tegile-link"><span style="display:block">Title</span></a></li>
@@ -70,8 +70,8 @@ email-signature-form:
             'Gartner MQs':
                 live_cta_img:
                     fn.append: |-
-                        <div id="card_4" style="margin:1rem 2rem 0 0;display:inline-block"><a style="color:#1c5ea1;text-decoration:none" href="tegile-link"><img style="margin:0;" src="image-source" width="150"></a></div>
-                    this.action: $('#card_4 a').attr('href','http://www.tegile.com/gartner-magic-quadrant/?utm_source=email&utm_medium=signature&utm_campaign=gartner').find('img').attr('src',$(location).prop('protocol')+'//'+$(location).prop('hostname')+':'+$(location).prop('port')+'/services/forms/signature-request/gartner_card.png');
+                        <div id="card_4" style="margin-top:1rem;margin-right:2rem;margin-bottom:0;margin-left:0;display:inline-block"><a style="color:#1c5ea1;text-decoration:none" href="tegile-link"><img style="margin:0;" src="image-source" width="150"></a></div>
+                    this.action: $('#card_4 a').attr('href','http://www.tegile.com/gartner-magic-quadrant/?utm_source=email&utm_medium=signature&utm_campaign=gartner').find('img').attr('src',$(location).prop('protocol')+'//'+$(location).prop('hostname')+':'+$(location).prop('port')+'/email-sig/gartner_card.png');
                 live_cta_txt:
                     fn.append: |-
                         <li id="link_4"><a style="color:#1c5ea1;text-decoration:none" href="tegile-link"><span style="display:block">Title</span></a></li>
@@ -79,8 +79,8 @@ email-signature-form:
             'Storage Survey':
                 live_cta_img:
                     fn.append: |-
-                        <div id="card_5" style="margin:1rem 2rem 0 0;display:inline-block"><a style="color:#1c5ea1;text-decoration:none" href="tegile-link"><img style="margin:0;" src="image-source" width="150"></a></div>
-                    this.action: $('#card_5 a').attr('href','http://pages.tegile.com/VM-storage-survey.html?utm_source=email&utm_medium=signature&utm_campaign=vm-survey').find('img').attr('src',$(location).prop('protocol')+'//'+$(location).prop('hostname')+':'+$(location).prop('port')+'/services/forms/signature-request/stateofstorage_card.png');
+                        <div id="card_5" style="margin-top:1rem;margin-right:2rem;margin-bottom:0;margin-left:0;display:inline-block"><a style="color:#1c5ea1;text-decoration:none" href="tegile-link"><img style="margin:0;" src="image-source" width="150"></a></div>
+                    this.action: $('#card_5 a').attr('href','http://pages.tegile.com/VM-storage-survey.html?utm_source=email&utm_medium=signature&utm_campaign=vm-survey').find('img').attr('src',$(location).prop('protocol')+'//'+$(location).prop('hostname')+':'+$(location).prop('port')+'/email-sig/stateofstorage_card.png');
                 live_cta_txt:
                     fn.append: |-
                         <li id="link_5"><a style="color:#1c5ea1;text-decoration:none" href="tegile-link"><span style="display:block">Title</span></a></li>
@@ -88,8 +88,8 @@ email-signature-form:
             'Case Studies':
                 live_cta_img:
                     fn.append: |-
-                        <div id="card_6" style="margin:1rem 2rem 0 0;display:inline-block"><a style="color:#1c5ea1;text-decoration:none" href="tegile-link"><img style="margin:0;" src="image-source" width="150"></a></div>
-                    this.action: $('#card_6 a').attr('href','http://www.tegile.com/resources/case-studies/?utm_source=email&utm_medium=signature&utm_campaign=case-studies').find('img').attr('src',$(location).prop('protocol')+'//'+$(location).prop('hostname')+':'+$(location).prop('port')+'/services/forms/signature-request/casestudy_card.png');
+                        <div id="card_6" style="margin-top:1rem;margin-right:2rem;margin-bottom:0;margin-left:0;display:inline-block"><a style="color:#1c5ea1;text-decoration:none" href="tegile-link"><img style="margin:0;" src="image-source" width="150"></a></div>
+                    this.action: $('#card_6 a').attr('href','http://www.tegile.com/resources/case-studies/?utm_source=email&utm_medium=signature&utm_campaign=case-studies').find('img').attr('src',$(location).prop('protocol')+'//'+$(location).prop('hostname')+':'+$(location).prop('port')+'/email-sig/casestudy_card.png');
                 live_cta_txt:
                     fn.append: |-
                         <li id="link_6"><a style="color:#1c5ea1;text-decoration:none" href="tegile-link"><span style="display:block">Title</span></a></li>
@@ -97,8 +97,8 @@ email-signature-form:
             'Flash Storage Primer':
                 live_cta_img:
                     fn.append: |-
-                        <div id="card_7" style="margin:1rem 2rem 0 0;display:inline-block"><a style="color:#1c5ea1;text-decoration:none" href="tegile-link"><img style="margin:0;" src="image-source" width="150"></a></div>
-                    this.action: $('#card_7 a').attr('href','http://pages.tegile.com/flash-storage-technical-and-economic-primer.html?utm_source=email&utm_medium=signature&utm_campaign=primer').find('img').attr('src',$(location).prop('protocol')+'//'+$(location).prop('hostname')+':'+$(location).prop('port')+'/services/forms/signature-request/flashprimer_card.png');
+                        <div id="card_7" style="margin-top:1rem;margin-right:2rem;margin-bottom:0;margin-left:0;display:inline-block"><a style="color:#1c5ea1;text-decoration:none" href="tegile-link"><img style="margin:0;" src="image-source" width="150"></a></div>
+                    this.action: $('#card_7 a').attr('href','http://pages.tegile.com/flash-storage-technical-and-economic-primer.html?utm_source=email&utm_medium=signature&utm_campaign=primer').find('img').attr('src',$(location).prop('protocol')+'//'+$(location).prop('hostname')+':'+$(location).prop('port')+'/email-sig/flashprimer_card.png');
                 live_cta_txt:
                     fn.append: |-
                         <li id="link_7"><a style="color:#1c5ea1;text-decoration:none" href="tegile-link"><span style="display:block">Title</span></a></li>
@@ -106,8 +106,8 @@ email-signature-form:
             'Flash Storage for Dummies':
                 live_cta_img:
                     fn.append: |-
-                        <div id="card_8" style="margin:1rem 2rem 0 0;display:inline-block"><a style="color:#1c5ea1;text-decoration:none" href="tegile-link"><img style="margin:0;" src="image-source" width="150"></a></div>
-                    this.action: $('#card_8 a').attr('href','http://pages.tegile.com/eBook_Flash_Storage_For_Virtualization_registration.html?utm_source=email&utm_medium=signature&utm_campaign=dummies').find('img').attr('src',$(location).prop('protocol')+'//'+$(location).prop('hostname')+':'+$(location).prop('port')+'/services/forms/signature-request/dummies_card.png');
+                        <div id="card_8" style="margin-top:1rem;margin-right:2rem;margin-bottom:0;margin-left:0;display:inline-block"><a style="color:#1c5ea1;text-decoration:none" href="tegile-link"><img style="margin:0;" src="image-source" width="150"></a></div>
+                    this.action: $('#card_8 a').attr('href','http://pages.tegile.com/eBook_Flash_Storage_For_Virtualization_registration.html?utm_source=email&utm_medium=signature&utm_campaign=dummies').find('img').attr('src',$(location).prop('protocol')+'//'+$(location).prop('hostname')+':'+$(location).prop('port')+'/email-sig/dummies_card.png');
                 live_cta_txt:
                     fn.append: |-
                         <li id="link_8"><a style="color:#1c5ea1;text-decoration:none" href="tegile-link"><span style="display:block">Title</span></a></li>

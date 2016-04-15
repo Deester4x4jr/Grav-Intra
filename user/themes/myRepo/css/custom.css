@@ -26,6 +26,8 @@
 
 .modal {
     z-index: 12000 !Important;
+    width: auto !Important;
+    max-width: 600px !Important;
 }
 
 /*Header Styles*/
