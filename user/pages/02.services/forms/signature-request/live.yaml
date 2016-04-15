@@ -36,7 +36,7 @@ email-signature-form:
         sig_logo:
             checked:
                 live_logo: |-
-                    <td valign="middle" style="border:none;padding:0"><div style="text-align:left;margin:0 0 .75rem 0"><a href="http://www.tegile.com" target="_blank"><img height="40" src="h$(location).prop('protocol')+'//'+$(location).prop('hostname')+':'+$(location).prop('port')+'/email-sig/logo.png" style="margin: 0; display: inline-block; text-align: left;"></a></div>
+                    <td valign="middle" style="border:none;padding:0"><div style="text-align:left;margin:0 0 .75rem 0"><a href="http://www.tegile.com" target="_blank"><img height="40" src="http://creative.tegile.com/email-sig/logo.png" style="margin: 0; display: inline-block; text-align: left;"></a></div>
             unchecked:
                 live_company: 'Tegile Systems'
         links:
