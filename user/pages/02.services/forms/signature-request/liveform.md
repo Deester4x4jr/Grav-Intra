@@ -70,6 +70,14 @@ form:
             type: spacer
             title: Extras
         -
+            name: cta
+            label: 'Link Styles'
+            type: radio
+            help: 'Select the link style you would like to use'
+            options:
+                img: 'Full Pictures'
+                txt: 'Bulleted List'
+        -
             name: links
             label: 'Call to Action links'
             type: select
@@ -84,15 +92,7 @@ form:
                 link_5: 'Storage Survey'
                 link_6: 'Case Studies'
                 link_7: 'Flash Storage Primer'
-                link_8: 'Flash Storage for Dummies'
-        -
-            name: cta
-            label: 'Link Styles'
-            type: radio
-            help: 'Select the link style you would like to use'
-            options:
-                img: 'Full Pictures'
-                txt: 'Bulleted List'
+                link_8: 'Gorilla Guide for SQL'
         -
             name: sig_logo
             label: 'Display the Logo?'
