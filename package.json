@@ -1,0 +1,29 @@
+{
+  "name": "creative.tegile.com",
+  "version": "1.0.0",
+  "description": "This is the Creative Services Team's intranet site",
+  "main": "index.php",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://Deester4x4jr@github.com/Deester4x4jr/Grav-Intra.git"
+  },
+  "keywords": [
+    "Tegile",
+    "Intranet",
+    "Grav",
+    "Creative"
+  ],
+  "author": "Josh DeSherlia",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Deester4x4jr/Grav-Intra/issues"
+  },
+  "homepage": "https://github.com/Deester4x4jr/Grav-Intra#readme",
+  "devDependencies": {
+    "gulp": "^3.9.1",
+    "gulp-util": "^3.0.7"
+  }
+}
